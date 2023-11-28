@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
+//availableCameras(): Lấy danh sách các camera khả dụng.
+// MyApp(camera: firstCamera): Khởi chạy ứng dụng với widget MyApp và truyền thông tin của camera đầu tiên vào.
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Khởi tạo camera
@@ -34,7 +36,9 @@ class CameraScreen extends StatefulWidget {
 
 class _CameraScreenState extends State<CameraScreen> {
   late CameraController _controller;
-
+//initState(): Hàm này được gọi khi widget được tạo.
+// Trong đó, CameraController được khởi tạo với thông tin về camera và mức độ độ phân giải.
+// Sau đó, camera được khởi tạo và khi nó đã sẵn sàng (_controller.initialize().then((_) {...}), trạng thái được cập nhật để build lại giao diện.
   @override
   void initState() {
     super.initState();
@@ -59,7 +63,7 @@ class _CameraScreenState extends State<CameraScreen> {
       ),
       body: Center(
         child: AspectRatio(
-          aspectRatio: _controller.value.aspectRatio,
+          aspectRatio: _controller.value.aspectRatio,//AspectRatio chứa CameraPreview, giúp hiển thị hình ảnh từ camera với tỷ lệ khung hình.
           child: CameraPreview(_controller),
         ),
       ),

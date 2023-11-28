@@ -21,9 +21,12 @@ class MyImagePicker extends StatefulWidget {
 }
 
 class _MyImagePickerState extends State<MyImagePicker> {
-  XFile? _image;
+  XFile? _image;// _image để lưu trữ hình ảnh được chọn từ thư viện.
 
   // Hàm để chọn hình ảnh từ thư viện
+  //Hàm _pickImage() sử dụng ImagePicker để mở thư viện ảnh và chọn một hình ảnh.
+  // Sau đó, nó cập nhật trạng thái bằng cách gọi setState và đặt giá trị _image
+  // thành đường dẫn của hình ảnh đã chọn.
   Future<void> _pickImage() async {
     final imagePicker = ImagePicker();
     final pickedImage = await imagePicker.getImage(source: ImageSource.gallery);
@@ -33,6 +36,9 @@ class _MyImagePickerState extends State<MyImagePicker> {
     });
   }
 
+
+  //body chứa một Center với một điều kiện: nếu _image là null, hiển thị một văn bản "Chưa chọn hình ảnh",
+  // nếu không, hiển thị hình ảnh từ đường dẫn _image!.path.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,3 +58,5 @@ class _MyImagePickerState extends State<MyImagePicker> {
     );
   }
 }
+//floatingActionButton là một nút hoạt động để gọi hàm _pickImage
+// khi được nhấn, và có một biểu tượng là một hình ảnh từ thư viện
